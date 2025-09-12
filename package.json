@@ -1,0 +1,61 @@
+{
+  "name": "nextgen-marketplace",
+  "version": "1.0.0",
+  "description": "A production-grade marketplace monorepo built with pnpm + Nx",
+  "private": true,
+  "keywords": [
+    "marketplace",
+    "monorepo",
+    "pnpm",
+    "nx",
+    "typescript"
+  ],
+  "author": "NextGen Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "workspaces": [
+    "apps/*",
+    "libs/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "nx run-many --target=build --all",
+    "dev": "nx run-many --target=dev --all --parallel",
+    "test": "nx run-many --target=test --all",
+    "test:watch": "nx run-many --target=test --all --watch",
+    "lint": "nx run-many --target=lint --all",
+    "lint:fix": "nx run-many --target=lint --all --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "nx reset && rm -rf node_modules apps/*/node_modules libs/*/node_modules tools/*/node_modules",
+    "graph": "nx graph",
+    "affected": "nx affected",
+    "affected:build": "nx affected:build",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint"
+  },
+  "devDependencies": {
+    "@nx/workspace": "^17.3.0",
+    "@nx/js": "^17.3.0",
+    "@nx/eslint-plugin": "^17.3.0",
+    "@nx/jest": "^17.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "nx": "^17.3.0",
+    "only-allow": "^1.2.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "nx": {
+    "includedScripts": []
+  }
+}

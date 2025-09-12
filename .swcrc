@@ -1,0 +1,32 @@
+{
+  "jsc": {
+    "target": "es2017",
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "dynamicImport": true
+    },
+    "transform": {
+      "decoratorMetadata": true,
+      "legacyDecorator": true
+    },
+    "keepClassNames": true,
+    "externalHelpers": true,
+    "loose": true
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  },
+  "sourceMaps": true,
+  "exclude": [
+    ".*\\.spec\\.(js|ts)$",
+    ".*\\.test\\.(js|ts)$",
+    "./src/jest-setup\\.ts$",
+    ".*/src/jest-setup\\.ts$",
+    ".*\\.(spec|test)\\.(ts|js)$"
+  ]
+}
