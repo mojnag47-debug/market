@@ -23,7 +23,6 @@ module.exports = {
     name: 'NEXTGEN-MARKETPLACE',
     color: 'magentaBright',
   },
-  preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],

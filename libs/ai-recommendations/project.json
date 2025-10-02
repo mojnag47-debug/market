@@ -1,0 +1,26 @@
+{
+  "name": "ai-recommendations",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "ai-recommendations/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/ai-recommendations",
+        "main": "ai-recommendations/src/index.ts",
+        "tsConfig": "ai-recommendations/tsconfig.lib.json",
+        "assets": ["ai-recommendations/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+  "jestConfig": "libs/ai-recommendations/jest.config.ts"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "payment-zarinpal",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "payment-zarinpal/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/payment-zarinpal",
+        "main": "payment-zarinpal/src/index.ts",
+        "tsConfig": "payment-zarinpal/tsconfig.lib.json",
+        "assets": ["payment-zarinpal/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+        "options": {
+        "jestConfig": "libs/payment-zarinpal/jest.config.ts"
+      }
+    }
+  }
+}

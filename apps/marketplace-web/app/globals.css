@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override the UI library styles if needed */
+@layer base {
+  body {
+    font-family: Vazirmatn, ui-sans-serif, system-ui;
+  }
+}

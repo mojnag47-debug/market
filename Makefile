@@ -186,6 +186,15 @@ ci: ## Run full CI pipeline (install, lint, test, build)
 	make build
 	@echo "$(GREEN)CI pipeline completed successfully!$(RESET)"
 
+## Production CI with encrypted environment
+ci:prod: ## Production CI pipeline with encrypted environment
+	@echo "$(BLUE)Running production CI pipeline...$(RESET)"
+	./tools/env_management.sh decrypt
+	make ci
+	docker-compose -f docker-compose.prod.yml build
+	./tools/env_management.sh encrypt
+	@echo "$(GREEN)Production CI completed!$(RESET)"
+
 ci:affected ## Run CI for affected projects only
 	@echo "$(BLUE)Running CI for affected projects...$(RESET)"
 	make install:frozen
@@ -206,3 +215,47 @@ version:minor ## Bump minor version
 version:major ## Bump major version
 	@echo "$(BLUE)Bumping major version...$(RESET)"
 	pnpm version major
+
+## Production deployment targets
+deploy:prod: ## Deploy production stack
+	@echo "$(BLUE)Deploying production stack...$(RESET)"
+	docker swarm init --advertise-addr $(HOST_IP)
+	docker stack deploy -c docker-compose.prod.yml nextgen-marketplace
+	@echo "$(GREEN)Production stack deployed!$(RESET)"
+
+down:prod: ## Tear down production stack
+	@echo "$(YELLOW)Removing production stack...$(RESET)"
+	docker stack rm nextgen-marketplace
+	@echo "$(GREEN)Production stack removed!$(RESET)"
+
+## Docker Automation
+ENV ?= dev
+DOCKER_COMPOSE := docker-compose -f docker/docker-compose.${ENV}.yml
+
+# Start environment with resource constraints
+docker:up:
+	@echo "$(BLUE)Starting ${ENV} environment...$(RESET)"
+	@${DOCKER_COMPOSE} up \
+		--cpu-quota=${CPU_QUOTA:-2} \
+		--memory=${MEM_LIMIT:-2GB} \
+		-d
+
+# Production deployment with health checks
+docker:prod:
+	@$(MAKE) ENV=prod docker:up
+
+# Validate environment configuration
+validate-env:
+	@docker run --rm -v ${PWD}/.env:/app/.env ghcr.io/nextgen-tools/env-validator:latest
+
+## Resource Monitoring
+monitor:resources:
+	@docker stats $$(docker ps -q --filter label=com.nextgen.environment=${ENV})
+
+## Resource Monitoring
+monitor:resources:
+	@docker stats $$(docker ps -q --filter label=com.nextgen.environment=${ENV})
+
+## Resource Monitoring
+monitor:resources:
+	@docker stats $$(docker ps -q --filter label=com.nextgen.environment=${ENV})

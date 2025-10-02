@@ -103,13 +103,13 @@ Cargo.lock
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 .Python
 build/
 develop-eggs/
 eggs/
 .eggs/
 lib/
+!src/lib/**
 lib64/
 parts/
 sdist/
@@ -316,3 +316,7 @@ temp/
 # Local configuration files
 config.local.json
 settings.local.json
+
+# Next.js
+.next
+outout

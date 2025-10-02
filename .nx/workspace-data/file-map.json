@@ -1,0 +1,2202 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.6.2",
+  "pathMappings": {
+    "@nextgen-marketplace/api": [
+      "libs/api/src/index.ts"
+    ],
+    "@nextgen-marketplace/api/*": [
+      "libs/api/src/*"
+    ],
+    "@nextgen-marketplace/ui": [
+      "libs/ui/src/index.ts"
+    ],
+    "@nextgen-marketplace/ui/*": [
+      "libs/ui/src/*"
+    ],
+    "@nextgen-marketplace/types": [
+      "libs/types/src/index.ts"
+    ],
+    "@nextgen-marketplace/shared-utils": [
+      "libs/shared-utils/src/index.ts"
+    ],
+    "@nextgen-marketplace/shared-types": [
+      "libs/shared-types/src/index.ts"
+    ],
+    "@nextgen-marketplace/shared-ui": [
+      "libs/shared-ui/src/index.ts"
+    ],
+    "@nextgen-marketplace/shared-data": [
+      "libs/shared-data/src/index.ts"
+    ],
+    "@nextgen-marketplace/persian-utils": [
+      "libs/persian-utils/src/index.ts"
+    ],
+    "@nextgen-marketplace/common/*": [
+      "libs/common/src/*"
+    ],
+    "@nextgen-marketplace/ai-recommendations": [
+      "libs/ai-recommendations/src/index.ts"
+    ],
+    "@nextgen-marketplace/payment-zarinpal": [
+      "libs/payment-zarinpal/src/index.ts"
+    ],
+    "@nextgen-marketplace/blockchain-web3": [
+      "libs/blockchain-web3/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "README.md",
+        "hash": "7110792898124792762"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/FileContentIndex/db39cc16-2841-49bb-abb3-269364db0851.vsidx",
+        "hash": "14902064706607757555"
+      },
+      {
+        "file": ".vs/VSWorkspaceState.json",
+        "hash": "16855089429293798438"
+      },
+      {
+        "file": "postcss.config.js",
+        "hash": "14421569306772804999"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/FileContentIndex/9000c147-fdda-4cf4-a60a-76364e4b97f8.vsidx",
+        "hash": "7680387538847359029"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/77166D1B9CEEB8D7A0CF4C2B0CAB336F",
+        "hash": "11206248241224809413"
+      },
+      {
+        "file": ".vs/ProjectSettings.json",
+        "hash": "10175589240379181388"
+      },
+      {
+        "file": "package.json",
+        "hash": "3570935094473673033"
+      },
+      {
+        "file": "apps/ml/requirements.txt",
+        "hash": "14009702571970357946"
+      },
+      {
+        "file": "e2e/ar-commerce.spec.ts",
+        "hash": "9383945309153196571"
+      },
+      {
+        "file": "Makefile",
+        "hash": "780719354243741089"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/A0378AA04366C1C5CBD949A144DFF022",
+        "hash": "4015877828080680225"
+      },
+      {
+        "file": "tools/generate-token.js",
+        "hash": "16973772385101733310"
+      },
+      {
+        "file": "reqwest_example/Cargo.toml",
+        "hash": "9885472713735724495"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/copilot-chat/6656a37c/sessions/2514cbf6-9296-488f-b63c-5309f27f6a60",
+        "hash": "12412570929985613402"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/63BA92EF5714A11402C725775CBDDFD6",
+        "hash": "14942410143783259631"
+      },
+      {
+        "file": "libs/api/src/index.ts",
+        "hash": "16692918231079380388"
+      },
+      {
+        "file": "services/catalog/src/main.rs",
+        "hash": "11951559079249702032"
+      },
+      {
+        "file": "tools/config/jest/setup.ts",
+        "hash": "4944213347260668705"
+      },
+      {
+        "file": "prisma/seed.ts",
+        "hash": "16327780884611964272"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/7A1BAEC61738B0458EA1C4CE8AF2016F/63BA92EF5714A11402C725775CBDDFD6",
+        "hash": "2327440304239096631"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/7A1BAEC61738B0458EA1C4CE8AF2016F/E782740FD249C860DCECB75B7DA159D2",
+        "hash": "6638520602849397765"
+      },
+      {
+        "file": "tools/env_management.sh",
+        "hash": "12661517388214902401"
+      },
+      {
+        "file": "blockchain/deploy/001_deploy_marketplace.ts",
+        "hash": "7717522503802327532"
+      },
+      {
+        "file": "tailwind.config.js",
+        "hash": "7032839866817919903"
+      },
+      {
+        "file": "services/catalog/Cargo.toml",
+        "hash": "11650682138704371288"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/FileContentIndex/a5fe6e28-5294-49b6-8c5b-22c80a2d9feb.vsidx",
+        "hash": "8698620792623762196"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/E0E8B37419070922D29D03E602D6F1C2",
+        "hash": "8808276039679213288"
+      },
+      {
+        "file": "src/__tests__/ProductARViewer.test.tsx",
+        "hash": "17162928499253510935"
+      },
+      {
+        "file": "apps/catalog/src/error.rs",
+        "hash": "12294220748155848568"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/state.mpack",
+        "hash": "12305725917815938316"
+      },
+      {
+        "file": "docker/docker-compose.prod.yml",
+        "hash": "11006091059215986138"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "7735826822463252003"
+      },
+      {
+        "file": "src/__tests__/ar-assets.test.ts",
+        "hash": "452920005110890849"
+      },
+      {
+        "file": "e2e/product-ar-viewer.spec.ts",
+        "hash": "13729251541186379688"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "16120446548964928976"
+      },
+      {
+        "file": "src/app/api/ar/upload/route.ts",
+        "hash": "13475617435264363440"
+      },
+      {
+        "file": "prisma/seed-ar-assets.cjs",
+        "hash": "12312060618225201361"
+      },
+      {
+        "file": "prisma/schema.prisma",
+        "hash": "12933428429798274598"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "17345285885930810907"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "6244796400604204007"
+      },
+      {
+        "file": "prisma/migrations/20250405120000_add_ar_models/migration.sql",
+        "hash": "12638104985743495995"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/B946394040562EAB8FA24BD149FDC22F",
+        "hash": "15420568153509358096"
+      },
+      {
+        "file": "libs/api/src/client.ts",
+        "hash": "8908261980594214833"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7509856808643460919"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/6DD5ACEA82B00D07FEB49A31495637AE",
+        "hash": "14942410143783259631"
+      },
+      {
+        "file": ".github/instructions/nx.instructions.md",
+        "hash": "13509283602484742755"
+      },
+      {
+        "file": "apps/catalog/Cargo.toml",
+        "hash": "13467741075960919717"
+      },
+      {
+        "file": "e2e/ar-upload.spec.ts",
+        "hash": "5503202795710467859"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "2277289416948756673"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/8A0871B3096E5F47A71788A1A6830B2F",
+        "hash": "989376010896369710"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/BFA6A4940226420DF89C2DA31C8FFB0F",
+        "hash": "4015877828080680225"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/FileContentIndex/6c8a6750-eaa9-4967-9210-ab0123ebc06e.vsidx",
+        "hash": "8457167409050865752"
+      },
+      {
+        "file": "services/catalog/Dockerfile",
+        "hash": "11752594084398876518"
+      },
+      {
+        "file": "docker/docker-compose.staging.yml",
+        "hash": "7044814992601743680"
+      },
+      {
+        "file": ".swcrc",
+        "hash": "2611466586453400718"
+      },
+      {
+        "file": "apps/ml/main.py",
+        "hash": "7551165689961373899"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/7A1BAEC61738B0458EA1C4CE8AF2016F/A99F6EE775454DCE21E405F84BDBBFF1",
+        "hash": "2327440304239096631"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "981723917612229841"
+      },
+      {
+        "file": "src/components/ProductARViewer.tsx",
+        "hash": "5501095489249628063"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/FileContentIndex/80ac4b7b-e889-4aec-89d3-c535444c6ed6.vsidx",
+        "hash": "8429311843825694191"
+      },
+      {
+        "file": "prisma/seed-ar-assets.ts",
+        "hash": "8687246039833386774"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "12065844172711862920"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/2890122148BCFD9CA3530754A1B07452",
+        "hash": "17800970551798597216"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/v17/DocumentLayout.json",
+        "hash": "10046983465446881441"
+      },
+      {
+        "file": "tools/README.md",
+        "hash": "4582141593437750771"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "6870352021923392442"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/v17/.wsuo",
+        "hash": "11845210024968659529"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/D20ADD027D49818022E1BEA63162DC46",
+        "hash": "7947242249476191666"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/7A1BAEC61738B0458EA1C4CE8AF2016F/F1779DAB10DB3DDD4130F1389ED69C5B",
+        "hash": "6638520602849397765"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/4DC339E25476A938CD6F47A630706819",
+        "hash": "17800970551798597216"
+      },
+      {
+        "file": "WARP.md",
+        "hash": "15183442072174495848"
+      },
+      {
+        "file": "scripts/smoke_test.sh",
+        "hash": "14406116572696899433"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "18139307520348755994"
+      },
+      {
+        "file": "apps/catalog/src/handlers/products.rs",
+        "hash": "80139528631562596"
+      },
+      {
+        "file": "apps/catalog/src/database.rs",
+        "hash": "14476373864190668212"
+      },
+      {
+        "file": "docs/onboarding/checklist.md",
+        "hash": "5185726643348923464"
+      },
+      {
+        "file": "src/__tests__/upload.test.tmp.ts",
+        "hash": "14131628513224363480"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/7442DB0107ADC5D810317045F6B2F62C",
+        "hash": "5843941207854071593"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/1A64FFB4DFA160F4093A2E68F7D14AC7",
+        "hash": "16802958049311079579"
+      },
+      {
+        "file": "docs/api/openapi.yaml",
+        "hash": "7640963808137617292"
+      },
+      {
+        "file": "tools/jest/jest.ar.config.js",
+        "hash": "9064472364268521316"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/504FD0B3CC95B1F42CF9F456602F06A4",
+        "hash": "16486211728385532122"
+      },
+      {
+        "file": "apps/catalog/src/handlers/health.rs",
+        "hash": "4195110278190499179"
+      },
+      {
+        "file": ".trae/.ignore",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "contracts/Governance.sol",
+        "hash": "14257955332485029368"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "13408370188185776689"
+      },
+      {
+        "file": "docs/architecture/0001-documentation-strategy.md",
+        "hash": "6474092147156969733"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/7D4DC114B58B1E9069C444B126517788",
+        "hash": "2327440304239096631"
+      },
+      {
+        "file": "docs/development/coding-standards.md",
+        "hash": "11433249886956065539"
+      },
+      {
+        "file": ".vs/nextgen-marketplace/v17/DocumentLayout.backup.json",
+        "hash": "6278331824276376996"
+      },
+      {
+        "file": "reqwest_example/src/main.rs",
+        "hash": "11579488711461144451"
+      },
+      {
+        "file": "docs/blockchain-web3-integration.md",
+        "hash": "8755398713982497271"
+      },
+      {
+        "file": "apps/catalog/Dockerfile",
+        "hash": "11396490090005200124"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/0120F84864DA974C9DD0C0D6AD14D7AA",
+        "hash": "5843941207854071593"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/4E844B5B91AA07EE6C5EFA13344E0551",
+        "hash": "8847828023619413043"
+      },
+      {
+        "file": "apps/web/src/styles/design-system.ts",
+        "hash": "12625800998140029589"
+      },
+      {
+        "file": "docs/sidebars.js",
+        "hash": "16436436112214666292"
+      },
+      {
+        "file": "docker/docker-compose.dev.yml",
+        "hash": "13279547001189889091"
+      },
+      {
+        "file": "apps/catalog/src/handlers/mod.rs",
+        "hash": "1196608344427936120"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/7A1BAEC61738B0458EA1C4CE8AF2016F/FFE71644C083A6EEFD82FA0C0D3392D1",
+        "hash": "2941879448998111617"
+      },
+      {
+        "file": "docs/troubleshooting/playbook.md",
+        "hash": "17311286675822100872"
+      },
+      {
+        "file": "simple_rust_demo/src/main.rs",
+        "hash": "799420713708546939"
+      },
+      {
+        "file": "apps/catalog/src/main.rs",
+        "hash": "10505273813084605899"
+      },
+      {
+        "file": "libs/types/src/index.ts",
+        "hash": "12737083055235324012"
+      },
+      {
+        "file": "scripts/load-test.k6.js",
+        "hash": "2326260977833528478"
+      },
+      {
+        "file": "tsconfig.ts-node.json",
+        "hash": "16040083367062796736"
+      },
+      {
+        "file": "src/types/model-viewer.d.ts",
+        "hash": "8400024871787838680"
+      },
+      {
+        "file": "src/app/products/[id]/page.tsx",
+        "hash": "15469478487379164227"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "3479604617301485785"
+      },
+      {
+        "file": "architecture/microservices.yaml",
+        "hash": "1831237727011743814"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/F978196308310B6A391585B892A703F3",
+        "hash": "8847828023619413043"
+      },
+      {
+        "file": "src/__tests__/ar-commerce.test.ts",
+        "hash": "5315121298111782587"
+      },
+      {
+        "file": "contracts/NFTMarketplace.sol",
+        "hash": "16432553129480995245"
+      },
+      {
+        "file": "apps/catalog/src/models.rs",
+        "hash": "17952895915042043437"
+      },
+      {
+        "file": "docs/DEVELOPMENT.md",
+        "hash": "3484211639200675684"
+      },
+      {
+        "file": "src/__tests__/upload.test.ts",
+        "hash": "15587037095707701114"
+      },
+      {
+        "file": "libs/api/src/hooks.ts",
+        "hash": "4593609466686571263"
+      },
+      {
+        "file": "src/__tests__/api/ar-upload.test.ts",
+        "hash": "8948743523959272811"
+      },
+      {
+        "file": "blockchain/hardhat.config.ts",
+        "hash": "11236118930437995688"
+      },
+      {
+        "file": "libs/ar-commerce/ar-commerce.ts",
+        "hash": "14685000664529967568"
+      },
+      {
+        "file": ".env.example",
+        "hash": "7641429708725187896"
+      },
+      {
+        "file": "simple_rust_demo/Cargo.toml",
+        "hash": "12628485612217219535"
+      },
+      {
+        "file": "apps/catalog/src/auth.rs",
+        "hash": "7641055820786869814"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/F05AF79863E6EECA3BA4EDAABE5A80B7",
+        "hash": "989376010896369710"
+      },
+      {
+        "file": ".vs/CopilotSnapshots/F6CB142596928F48B63C5309F27F6A60/0F8A88FA6B24E846821A61F1DA7E7007/53650C6EE0404801C5349C97B5BB7B90",
+        "hash": "16802958049311079579"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "6915893435988683039"
+      },
+      {
+        "file": "prisma/migrations/20251002_fix_decimal/migration.sql",
+        "hash": "8761711454325910438"
+      },
+      {
+        "file": "docs/docusaurus.config.js",
+        "hash": "14194546845845285164"
+      }
+    ],
+    "projectFileMap": {
+      "ai-recommendations": [
+        {
+          "file": "libs/ai-recommendations/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/ai-recommendations/.swcrc",
+          "hash": "16777374493166073853"
+        },
+        {
+          "file": "libs/ai-recommendations/README.md",
+          "hash": "12726076477812564895"
+        },
+        {
+          "file": "libs/ai-recommendations/jest.config.ts",
+          "hash": "4052374010043695701"
+        },
+        {
+          "file": "libs/ai-recommendations/package.json",
+          "hash": "1079831680870811709",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan"
+          ]
+        },
+        {
+          "file": "libs/ai-recommendations/project.json",
+          "hash": "14945830444492331825"
+        },
+        {
+          "file": "libs/ai-recommendations/src/index.ts",
+          "hash": "5856230007289991636"
+        },
+        {
+          "file": "libs/ai-recommendations/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/ai-recommendations/tsconfig.json",
+          "hash": "2721527151549363223"
+        },
+        {
+          "file": "libs/ai-recommendations/tsconfig.lib.json",
+          "hash": "14539327243516648733"
+        },
+        {
+          "file": "libs/ai-recommendations/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "seller-portal": [
+        {
+          "file": "apps/seller-portal/.eslintrc.json",
+          "hash": "12484596866900214472"
+        },
+        {
+          "file": "apps/seller-portal/.swcrc",
+          "hash": "2742566327615098680"
+        },
+        {
+          "file": "apps/seller-portal/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/seller-portal/jest.config.ts",
+          "hash": "18314941935253620628",
+          "deps": [
+            "npm:jest",
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/seller-portal/next-env.d.ts",
+          "hash": "1320675027584673186"
+        },
+        {
+          "file": "apps/seller-portal/next.config.js",
+          "hash": "5443563404894739361",
+          "deps": [
+            "npm:@nx/next"
+          ]
+        },
+        {
+          "file": "apps/seller-portal/project.json",
+          "hash": "16325951411649541598"
+        },
+        {
+          "file": "apps/seller-portal/specs/index.spec.tsx",
+          "hash": "2873936096691223229",
+          "deps": [
+            "npm:react",
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/seller-portal/src/app/api/hello/route.ts",
+          "hash": "495073956729887886"
+        },
+        {
+          "file": "apps/seller-portal/src/app/dashboard/page.module.css",
+          "hash": "14514114946210592638"
+        },
+        {
+          "file": "apps/seller-portal/src/app/dashboard/page.tsx",
+          "hash": "17955539199156261615",
+          "deps": [
+            "npm:react",
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/seller-portal/src/app/dashboard/products/new/page.module.css",
+          "hash": "8190381479107775896"
+        },
+        {
+          "file": "apps/seller-portal/src/app/dashboard/products/new/page.tsx",
+          "hash": "6641323047683902349",
+          "deps": [
+            "npm:react-hook-form",
+            "npm:@hookform/resolvers",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/seller-portal/src/app/global.css",
+          "hash": "5221762088766465567"
+        },
+        {
+          "file": "apps/seller-portal/src/app/layout.tsx",
+          "hash": "4434708187366016908"
+        },
+        {
+          "file": "apps/seller-portal/src/app/page.module.css",
+          "hash": "6202866878299740447"
+        },
+        {
+          "file": "apps/seller-portal/src/app/page.tsx",
+          "hash": "17164621943801080661"
+        },
+        {
+          "file": "apps/seller-portal/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "apps/seller-portal/tsconfig.json",
+          "hash": "3491404311469436787"
+        },
+        {
+          "file": "apps/seller-portal/tsconfig.spec.json",
+          "hash": "11067654942057386280"
+        }
+      ],
+      "@nextgen-marketplace/auth": [
+        {
+          "file": "apps/auth/Dockerfile",
+          "hash": "11348129585551433623"
+        },
+        {
+          "file": "apps/auth/package.json",
+          "hash": "882999404041459305",
+          "deps": [
+            "npm:@nestjs/cli",
+            "npm:@nestjs/schematics",
+            "npm:@nestjs/testing",
+            "npm:@types/bcrypt",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/passport-jwt",
+            "npm:@types/passport-local",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/jwt",
+            "npm:@nestjs/passport",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@nestjs/typeorm",
+            "npm:@prisma/client",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:passport",
+            "npm:passport-jwt",
+            "npm:passport-local",
+            "npm:prisma",
+            "npm:reflect-metadata",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app.module.ts",
+          "hash": "11104534163571445490",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/jwt"
+          ]
+        },
+        {
+          "file": "apps/auth/src/auth.service.spec.ts",
+          "hash": "13788730569622475633",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/auth/src/auth/auth.controller.ts",
+          "hash": "3133847908593495881",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/auth/auth.module.ts",
+          "hash": "5108370460320139259",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/auth/auth.service.ts",
+          "hash": "7694713934684405738",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/jwt",
+            "npm:bcrypt"
+          ]
+        },
+        {
+          "file": "apps/auth/src/auth/dto/auth.dto.ts",
+          "hash": "2013559048910625164",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/auth/src/auth/guards/jwt-auth.guard.ts",
+          "hash": "12207853499457861749",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/jwt",
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/auth/src/health/health.controller.ts",
+          "hash": "16892124135113786132",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/health/health.module.ts",
+          "hash": "16449038485635731658",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/main.ts",
+          "hash": "10785681448458234105",
+          "deps": [
+            "npm:@nestjs/core",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/prisma/prisma.module.ts",
+          "hash": "3254723187737688247",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/prisma/prisma.service.ts",
+          "hash": "205281072247585672",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "apps/auth/src/users/users.module.ts",
+          "hash": "2436987275360316634",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/users/users.service.ts",
+          "hash": "8071228855554653818",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/tsconfig.json",
+          "hash": "952908496762544430"
+        }
+      ],
+      "payment-zarinpal": [
+        {
+          "file": "libs/payment-zarinpal/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/payment-zarinpal/.swcrc",
+          "hash": "16777374493166073853"
+        },
+        {
+          "file": "libs/payment-zarinpal/README.md",
+          "hash": "13420620359327404364"
+        },
+        {
+          "file": "libs/payment-zarinpal/jest.config.ts",
+          "hash": "9386432823678670671"
+        },
+        {
+          "file": "libs/payment-zarinpal/package.json",
+          "hash": "301592848846757007",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan"
+          ]
+        },
+        {
+          "file": "libs/payment-zarinpal/project.json",
+          "hash": "4631181250817693495"
+        },
+        {
+          "file": "libs/payment-zarinpal/src/index.ts",
+          "hash": "6349444578677826646"
+        },
+        {
+          "file": "libs/payment-zarinpal/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/payment-zarinpal/tsconfig.json",
+          "hash": "2721527151549363223"
+        },
+        {
+          "file": "libs/payment-zarinpal/tsconfig.lib.json",
+          "hash": "14539327243516648733"
+        },
+        {
+          "file": "libs/payment-zarinpal/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "persian-utils": [
+        {
+          "file": "libs/persian-utils/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/persian-utils/.swcrc",
+          "hash": "16777374493166073853"
+        },
+        {
+          "file": "libs/persian-utils/README.md",
+          "hash": "14180488389755507881"
+        },
+        {
+          "file": "libs/persian-utils/jest.config.ts",
+          "hash": "18226308763636362436"
+        },
+        {
+          "file": "libs/persian-utils/package.json",
+          "hash": "1762995961259753659",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/persian-utils/project.json",
+          "hash": "12602240126808344739"
+        },
+        {
+          "file": "libs/persian-utils/src/index.ts",
+          "hash": "16187064788314472523"
+        },
+        {
+          "file": "libs/persian-utils/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/persian-utils/tsconfig.json",
+          "hash": "9237724042059597536"
+        },
+        {
+          "file": "libs/persian-utils/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        },
+        {
+          "file": "libs/persian-utils/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "shared-types": [
+        {
+          "file": "libs/shared-types/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/shared-types/.swcrc",
+          "hash": "3136096835245068368"
+        },
+        {
+          "file": "libs/shared-types/README.md",
+          "hash": "10755169365705712441"
+        },
+        {
+          "file": "libs/shared-types/jest.config.ts",
+          "hash": "17958012667160377289"
+        },
+        {
+          "file": "libs/shared-types/package.json",
+          "hash": "2386726203131967834",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/shared-types/project.json",
+          "hash": "9177484957835004806"
+        },
+        {
+          "file": "libs/shared-types/src/index.ts",
+          "hash": "17477233218007285873"
+        },
+        {
+          "file": "libs/shared-types/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/shared-types/tsconfig.json",
+          "hash": "9237724042059597536"
+        },
+        {
+          "file": "libs/shared-types/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        },
+        {
+          "file": "libs/shared-types/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "admin-dashboard": [
+        {
+          "file": "apps/admin-dashboard/.eslintrc.json",
+          "hash": "12484596866900214472"
+        },
+        {
+          "file": "apps/admin-dashboard/.swcrc",
+          "hash": "2742566327615098680"
+        },
+        {
+          "file": "apps/admin-dashboard/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/admin-dashboard/jest.config.ts",
+          "hash": "10658374450490004723",
+          "deps": [
+            "npm:jest",
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/admin-dashboard/next-env.d.ts",
+          "hash": "1320675027584673186"
+        },
+        {
+          "file": "apps/admin-dashboard/next.config.js",
+          "hash": "5443563404894739361",
+          "deps": [
+            "npm:@nx/next"
+          ]
+        },
+        {
+          "file": "apps/admin-dashboard/project.json",
+          "hash": "18164570800535470457"
+        },
+        {
+          "file": "apps/admin-dashboard/specs/index.spec.tsx",
+          "hash": "2873936096691223229",
+          "deps": [
+            "npm:react",
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/admin-dashboard/src/app/api/hello/route.ts",
+          "hash": "495073956729887886"
+        },
+        {
+          "file": "apps/admin-dashboard/src/app/global.css",
+          "hash": "5221762088766465567"
+        },
+        {
+          "file": "apps/admin-dashboard/src/app/layout.tsx",
+          "hash": "2327457646913693360"
+        },
+        {
+          "file": "apps/admin-dashboard/src/app/page.module.css",
+          "hash": "2172089779929531879"
+        },
+        {
+          "file": "apps/admin-dashboard/src/app/page.tsx",
+          "hash": "9395322837915389145"
+        },
+        {
+          "file": "apps/admin-dashboard/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "apps/admin-dashboard/tsconfig.json",
+          "hash": "5222560244028948128"
+        },
+        {
+          "file": "apps/admin-dashboard/tsconfig.spec.json",
+          "hash": "11067654942057386280"
+        }
+      ],
+      "marketplace-web": [
+        {
+          "file": "apps/marketplace-web/.eslintrc.json",
+          "hash": "12484596866900214472"
+        },
+        {
+          "file": "apps/marketplace-web/.swcrc",
+          "hash": "2742566327615098680"
+        },
+        {
+          "file": "apps/marketplace-web/app/auth/login/page.tsx",
+          "hash": "11906486950665895670",
+          "deps": [
+            "npm:react",
+            "npm:next",
+            "npm:react-hook-form",
+            "npm:@hookform/resolvers",
+            "npm:zod",
+            "npm:lucide-react",
+            "@nextgen-marketplace/ui",
+            "npm:sonner"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/app/auth/register/page.tsx",
+          "hash": "11889340696270887018",
+          "deps": [
+            "npm:react",
+            "npm:next",
+            "npm:react-hook-form",
+            "npm:@hookform/resolvers",
+            "npm:zod",
+            "npm:lucide-react",
+            "@nextgen-marketplace/ui",
+            "npm:sonner"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/app/cart/page.tsx",
+          "hash": "5959274271106126823",
+          "deps": [
+            "npm:react",
+            "npm:lucide-react",
+            "@nextgen-marketplace/ui",
+            "npm:next",
+            "npm:sonner"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/app/globals.css",
+          "hash": "6889398155831589758"
+        },
+        {
+          "file": "apps/marketplace-web/app/layout.tsx",
+          "hash": "5736756133129005996",
+          "deps": [
+            "npm:next",
+            "npm:@tanstack/react-query",
+            "npm:@tanstack/react-query-devtools",
+            "npm:next-themes",
+            "npm:sonner",
+            "npm:react",
+            "@nextgen-marketplace/ui"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/app/page.tsx",
+          "hash": "5962052845988912290",
+          "deps": [
+            "npm:react",
+            "npm:lucide-react",
+            "@nextgen-marketplace/ui",
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/marketplace-web/jest.config.ts",
+          "hash": "16199837167041011589",
+          "deps": [
+            "npm:jest",
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/next-env.d.ts",
+          "hash": "1320675027584673186"
+        },
+        {
+          "file": "apps/marketplace-web/next.config.js",
+          "hash": "5443563404894739361",
+          "deps": [
+            "npm:@nx/next"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/project.json",
+          "hash": "8942391910370239489"
+        },
+        {
+          "file": "apps/marketplace-web/specs/index.spec.tsx",
+          "hash": "2873936096691223229",
+          "deps": [
+            "npm:react",
+            "npm:@testing-library/react"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/src/app/api/hello/route.ts",
+          "hash": "495073956729887886"
+        },
+        {
+          "file": "apps/marketplace-web/src/app/api/products/featured/route.ts",
+          "hash": "5732006149808622504",
+          "deps": [
+            "npm:next",
+            "@nextgen-marketplace/backend"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/src/app/dashboard/page.module.css",
+          "hash": "13082687433362305831"
+        },
+        {
+          "file": "apps/marketplace-web/src/app/dashboard/products/new/page.module.css",
+          "hash": "11288515418974681057"
+        },
+        {
+          "file": "apps/marketplace-web/src/app/global.css",
+          "hash": "5221762088766465567"
+        },
+        {
+          "file": "apps/marketplace-web/src/app/layout.tsx",
+          "hash": "8681915046166259459"
+        },
+        {
+          "file": "apps/marketplace-web/src/app/page.module.css",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/marketplace-web/src/app/page.tsx",
+          "hash": "16688183788917674512",
+          "deps": [
+            "npm:react",
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/marketplace-web/src/page.module.css",
+          "hash": "8685236916689238119"
+        },
+        {
+          "file": "apps/marketplace-web/tools/config/jest/setup.ts",
+          "hash": "9282566814688256149"
+        },
+        {
+          "file": "apps/marketplace-web/tsconfig.json",
+          "hash": "8381271307455797941"
+        },
+        {
+          "file": "apps/marketplace-web/tsconfig.spec.json",
+          "hash": "11067654942057386280"
+        }
+      ],
+      "shared-data": [
+        {
+          "file": "libs/shared-data/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/shared-data/.swcrc",
+          "hash": "16777374493166073853"
+        },
+        {
+          "file": "libs/shared-data/README.md",
+          "hash": "18404008069375572327"
+        },
+        {
+          "file": "libs/shared-data/jest.config.ts",
+          "hash": "9793916875061899681"
+        },
+        {
+          "file": "libs/shared-data/package.json",
+          "hash": "13338526088629291076",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan"
+          ]
+        },
+        {
+          "file": "libs/shared-data/project.json",
+          "hash": "13072152138475838753"
+        },
+        {
+          "file": "libs/shared-data/src/index.ts",
+          "hash": "3068653069792293996"
+        },
+        {
+          "file": "libs/shared-data/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/shared-data/tsconfig.json",
+          "hash": "2721527151549363223"
+        },
+        {
+          "file": "libs/shared-data/tsconfig.lib.json",
+          "hash": "14539327243516648733"
+        },
+        {
+          "file": "libs/shared-data/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "@nextgen-marketplace/backend": [
+        {
+          "file": "backend/.env.example",
+          "hash": "6398824307203163041"
+        },
+        {
+          "file": "backend/.eslintrc.js",
+          "hash": "11368893357762163009"
+        },
+        {
+          "file": "backend/.prettierrc",
+          "hash": "17541602499586084755"
+        },
+        {
+          "file": "backend/DATABASE.md",
+          "hash": "1888077268925188593"
+        },
+        {
+          "file": "backend/README.md",
+          "hash": "2140075147888797015"
+        },
+        {
+          "file": "backend/docker-compose.yml",
+          "hash": "3260653425439612204"
+        },
+        {
+          "file": "backend/package.json",
+          "hash": "2674249269090825131",
+          "deps": [
+            "npm:@types/express",
+            "npm:@types/node",
+            "npm:@types/compression",
+            "npm:@types/morgan",
+            "npm:@types/cors",
+            "npm:@types/jest",
+            "npm:@types/supertest",
+            "npm:typescript",
+            "npm:ts-node",
+            "npm:jest",
+            "npm:supertest",
+            "npm:eslint",
+            "npm:@typescript-eslint/eslint-plugin",
+            "npm:@typescript-eslint/parser",
+            "npm:prisma",
+            "npm:jest-environment-node",
+            "npm:cross-env",
+            "npm:@prisma/client",
+            "npm:express",
+            "npm:express-rate-limit",
+            "npm:helmet",
+            "npm:cors",
+            "npm:dotenv",
+            "npm:bcryptjs",
+            "npm:jsonwebtoken",
+            "npm:zod",
+            "npm:compression",
+            "npm:morgan",
+            "npm:uuid",
+            "npm:multer"
+          ]
+        },
+        {
+          "file": "backend/prisma/migrations/20241214_000000_init/migration.sql",
+          "hash": "9614352157986004163"
+        },
+        {
+          "file": "backend/prisma/schema.prisma",
+          "hash": "2776754982567778514"
+        },
+        {
+          "file": "backend/src/database/index.ts",
+          "hash": "18295147003576130353",
+          "deps": [
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "backend/src/database/queries.ts",
+          "hash": "8382180940406295531",
+          "deps": [
+            "npm:@prisma/client",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "backend/src/database/seed.ts",
+          "hash": "16310251522689818664",
+          "deps": [
+            "npm:@prisma/client",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "backend/src/middleware/auth.ts",
+          "hash": "18374013158386194150",
+          "deps": [
+            "npm:express",
+            "npm:jsonwebtoken"
+          ]
+        },
+        {
+          "file": "backend/src/middleware/errorHandler.ts",
+          "hash": "16723414079151613122",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "backend/src/middleware/security.ts",
+          "hash": "6203810268068947785",
+          "deps": [
+            "npm:express",
+            "npm:express-rate-limit",
+            "npm:helmet",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "backend/src/middleware/validation.ts",
+          "hash": "5583441310212513610",
+          "deps": [
+            "npm:express",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "backend/src/services/auth/auth.test.ts",
+          "hash": "6860829587464394641",
+          "deps": [
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "backend/src/services/auth/authController.ts",
+          "hash": "11000528637992773572",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "backend/src/services/auth/authRoutes.ts",
+          "hash": "13551897299208420616",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "backend/src/services/auth/authService.ts",
+          "hash": "6966782644413445783",
+          "deps": [
+            "npm:bcryptjs",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "backend/src/services/auth/server.ts",
+          "hash": "15788942477589315313",
+          "deps": [
+            "npm:express",
+            "npm:cors",
+            "npm:helmet",
+            "npm:compression",
+            "npm:morgan",
+            "npm:express-rate-limit",
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "backend/src/services/payment/payment.handler.ts",
+          "hash": "16884768817061290111",
+          "deps": [
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "backend/src/services/product/product.service.ts",
+          "hash": "12234177462353785773",
+          "deps": [
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "backend/src/services/products/productService.ts",
+          "hash": "12072937571464466673"
+        },
+        {
+          "file": "backend/src/shared/database.ts",
+          "hash": "6656678299580660725",
+          "deps": [
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "backend/src/shared/redis.ts",
+          "hash": "121688419053365243"
+        },
+        {
+          "file": "backend/src/shared/swagger.ts",
+          "hash": "12447440977304015592",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "backend/src/shared/types.ts",
+          "hash": "1082614033981370113",
+          "deps": [
+            "npm:express",
+            "npm:jsonwebtoken"
+          ]
+        },
+        {
+          "file": "backend/tsconfig.json",
+          "hash": "15841812025182389116"
+        }
+      ],
+      "shared-ui": [
+        {
+          "file": "libs/shared-ui/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/shared-ui/.swcrc",
+          "hash": "16777374493166073853"
+        },
+        {
+          "file": "libs/shared-ui/README.md",
+          "hash": "2557450524317973513"
+        },
+        {
+          "file": "libs/shared-ui/jest.config.ts",
+          "hash": "865576630170167839"
+        },
+        {
+          "file": "libs/shared-ui/package.json",
+          "hash": "9629003521154524225",
+          "deps": [
+            "npm:react@18.3.1",
+            "npm:react-dom@18.3.1",
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@emotion/react",
+            "npm:@emotion/styled",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/shared-ui/project.json",
+          "hash": "8703047324259042825"
+        },
+        {
+          "file": "libs/shared-ui/src/index.ts",
+          "hash": "15682517005854060669"
+        },
+        {
+          "file": "libs/shared-ui/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/shared-ui/tsconfig.json",
+          "hash": "15890793293008389543"
+        },
+        {
+          "file": "libs/shared-ui/tsconfig.lib.json",
+          "hash": "7659089834425421645"
+        },
+        {
+          "file": "libs/shared-ui/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        },
+        {
+          "file": "libs/shared-ui/vite.config.ts",
+          "hash": "9617425388760699416",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite",
+            "npm:vite-plugin-dts"
+          ]
+        }
+      ],
+      "@nextgen-marketplace/ui": [
+        {
+          "file": "libs/ui/package.json",
+          "hash": "14285576407101330169",
+          "deps": [
+            "npm:react",
+            "npm:react-dom",
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:class-variance-authority",
+            "npm:clsx",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:tailwind-merge"
+          ]
+        },
+        {
+          "file": "libs/ui/src/components/badge.tsx",
+          "hash": "429691654691828273",
+          "deps": [
+            "npm:react",
+            "npm:class-variance-authority"
+          ]
+        },
+        {
+          "file": "libs/ui/src/components/button.tsx",
+          "hash": "7098686594330973471",
+          "deps": [
+            "npm:react",
+            "npm:@radix-ui/react-slot",
+            "npm:class-variance-authority"
+          ]
+        },
+        {
+          "file": "libs/ui/src/components/card.tsx",
+          "hash": "15634285350305317215",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "libs/ui/src/components/input.tsx",
+          "hash": "54824196336955951",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "libs/ui/src/index.ts",
+          "hash": "1645841695762395761"
+        },
+        {
+          "file": "libs/ui/src/styles/globals.css",
+          "hash": "4231136803796619871"
+        }
+      ],
+      "@nextgen-marketplace/orders": [
+        {
+          "file": "apps/orders/package.json",
+          "hash": "6368324431354457147",
+          "deps": [
+            "npm:@nestjs/cli",
+            "npm:@nestjs/schematics",
+            "npm:@nestjs/testing",
+            "npm:@types/bcrypt",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/jwt",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client",
+            "npm:axios",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:prisma",
+            "npm:reflect-metadata",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/orders/src/app.module.ts",
+          "hash": "9762231740096182846",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/jwt",
+            "npm:@nestjs/axios"
+          ]
+        },
+        {
+          "file": "apps/orders/src/main.ts",
+          "hash": "12446084560711899187",
+          "deps": [
+            "npm:@nestjs/core",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/orders/src/orders/dto/order.dto.ts",
+          "hash": "7094311704430684931",
+          "deps": [
+            "npm:class-validator",
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "apps/orders/src/payment/shaparak.integration.spec.ts",
+          "hash": "2697974414467818868",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:nock"
+          ]
+        },
+        {
+          "file": "apps/orders/src/prisma/prisma.module.ts",
+          "hash": "3254723187737688247",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/orders/src/prisma/prisma.service.ts",
+          "hash": "201466026772068703",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@prisma/client"
+          ]
+        },
+        {
+          "file": "apps/orders/tsconfig.json",
+          "hash": "952908496762544430"
+        }
+      ],
+      "api": [
+        {
+          "file": "apps/api/.eslintrc.json",
+          "hash": "12484596866900214472"
+        },
+        {
+          "file": "apps/api/jest.config.ts",
+          "hash": "10125666663122393265"
+        },
+        {
+          "file": "apps/api/project.json",
+          "hash": "9791723452680019131"
+        },
+        {
+          "file": "apps/api/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/api/src/main.ts",
+          "hash": "4246536541975946356",
+          "deps": [
+            "npm:express",
+            "npm:cors",
+            "npm:helmet",
+            "npm:compression",
+            "npm:morgan",
+            "npm:express-rate-limit",
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "apps/api/src/types.d.ts",
+          "hash": "14849136513683643891"
+        },
+        {
+          "file": "apps/api/tools/config/jest/setup.ts",
+          "hash": "6527405428679083240"
+        },
+        {
+          "file": "apps/api/tsconfig.app.json",
+          "hash": "1786556185837104115"
+        },
+        {
+          "file": "apps/api/tsconfig.json",
+          "hash": "7093189042724607239"
+        },
+        {
+          "file": "apps/api/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "shared-utils": [
+        {
+          "file": "libs/shared-utils/.eslintrc.json",
+          "hash": "17762143621681419098"
+        },
+        {
+          "file": "libs/shared-utils/.swcrc",
+          "hash": "3665333791610566550"
+        },
+        {
+          "file": "libs/shared-utils/README.md",
+          "hash": "1331774545018674696"
+        },
+        {
+          "file": "libs/shared-utils/jest.config.ts",
+          "hash": "8286422538302606955"
+        },
+        {
+          "file": "libs/shared-utils/package.json",
+          "hash": "8420969313292644577",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client@6.16.3",
+            "npm:@swc/helpers",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan"
+          ]
+        },
+        {
+          "file": "libs/shared-utils/project.json",
+          "hash": "6727244252478739446"
+        },
+        {
+          "file": "libs/shared-utils/src/index.ts",
+          "hash": "2115022695656941492"
+        },
+        {
+          "file": "libs/shared-utils/src/logging/persian-logger.config.ts",
+          "hash": "14248586874823376664",
+          "deps": [
+            "npm:winston",
+            "npm:dayjs"
+          ]
+        },
+        {
+          "file": "libs/shared-utils/tools/config/jest/setup.ts",
+          "hash": "6811135246702140763"
+        },
+        {
+          "file": "libs/shared-utils/tsconfig.json",
+          "hash": "2721527151549363223"
+        },
+        {
+          "file": "libs/shared-utils/tsconfig.lib.json",
+          "hash": "6523533485042253567"
+        },
+        {
+          "file": "libs/shared-utils/tsconfig.spec.json",
+          "hash": "14847024475827438161"
+        }
+      ],
+      "@nextgen-marketplace/db": [
+        {
+          "file": "libs/db/package.json",
+          "hash": "3961056719645325336",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@types/compression",
+            "npm:@types/cors",
+            "npm:@types/dotenv",
+            "npm:@types/express",
+            "npm:@types/helmet",
+            "npm:@types/morgan",
+            "npm:@types/node",
+            "npm:@types/supertest",
+            "npm:dotenv",
+            "npm:express-rate-limit",
+            "npm:jest-mock-extended",
+            "npm:nock",
+            "npm:supertest",
+            "npm:ts-node@10.9.1",
+            "npm:typescript",
+            "npm:@nestjs/axios",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-express",
+            "npm:@nestjs/swagger",
+            "npm:@prisma/client",
+            "npm:bcrypt",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:compression",
+            "npm:cors",
+            "npm:helmet",
+            "npm:morgan",
+            "npm:prisma"
+          ]
+        },
+        {
+          "file": "libs/db/prisma/schema.prisma",
+          "hash": "8033043668879266521"
+        },
+        {
+          "file": "libs/db/src/index.ts",
+          "hash": "11160250751864361112",
+          "deps": [
+            "npm:@prisma/client"
+          ]
+        }
+      ],
+      "api-e2e": [
+        {
+          "file": "apps/api-e2e/.eslintrc.json",
+          "hash": "12484596866900214472"
+        },
+        {
+          "file": "apps/api-e2e/jest.config.ts",
+          "hash": "14208964533442407739"
+        },
+        {
+          "file": "apps/api-e2e/project.json",
+          "hash": "16343812178902023029"
+        },
+        {
+          "file": "apps/api-e2e/src/api/api.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/api-e2e/src/support/global-setup.ts",
+          "hash": "10817858795115919263",
+          "deps": [
+            "npm:@nx/node"
+          ]
+        },
+        {
+          "file": "apps/api-e2e/src/support/global-teardown.ts",
+          "hash": "14210317125869451873",
+          "deps": [
+            "npm:@nx/node"
+          ]
+        },
+        {
+          "file": "apps/api-e2e/src/support/test-setup.ts",
+          "hash": "15521797170623961900",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/api-e2e/tsconfig.json",
+          "hash": "2346920493880922870"
+        },
+        {
+          "file": "apps/api-e2e/tsconfig.spec.json",
+          "hash": "14226830188665428950"
+        }
+      ]
+    }
+  },
+  "externalNodesHash": "1795169462080931194"
+}

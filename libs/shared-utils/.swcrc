@@ -1,0 +1,39 @@
+{
+  "jsc": {
+    "target": "es2022",
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "dynamicImport": true,
+      "tsx": false
+    },
+    "transform": {
+      "decoratorMetadata": true,
+      "legacyDecorator": true,
+      "optimizer": {
+        "simplify": true,
+        "globals": {
+          "vars": {
+            "__DEBUG__": "false"
+          }
+        }
+      }
+    },
+    "keepClassNames": true,
+    "externalHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nextgen-marketplace/*": ["libs/*/src/index.ts"]
+    }
+  },
+  "module": {
+    "type": "es6",
+    "strict": true,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  },
+  "sourceMaps": true,
+  "minify": false,
+  "isModule": true
+}

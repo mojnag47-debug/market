@@ -1,0 +1,142 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:alpine
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    networks:
+      - backend
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: marketplace
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  auth:
+    build:
+      context: .
+      dockerfile: apps/auth/Dockerfile
+    environment:
+      NODE_ENV: production
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgres://user:pass@db:5432/marketplace
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    depends_on:
+      - redis
+      - db
+    networks:
+      - backend
+
+  catalog:
+    build:
+      context: .
+      dockerfile: apps/catalog/Dockerfile
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/marketplace
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1G
+    ports:
+      - "3002:3002"
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  orders:
+    build:
+      context: .
+      dockerfile: apps/orders/Dockerfile
+    environment:
+      SHAPARAK_API_KEY: ${SHAPARAK_API_KEY}
+      DATABASE_URL: postgres://user:pass@db:5432/marketplace
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 768M
+    ports:
+      - "3004:3004"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.buffer.size: "524288" # تنظیمات بهینه برای شبکه‌های پرتاخیر
+
+    image: postgres:16
+    env_file: .env.prod
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  redis:
+    image: redis:7-alpine
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - nextgen-backend
+
+volumes:
+  pgdata-prod:
+
+networks:
+  nextgen-backend:
+    driver: bridge
+  nextgen-frontend:
+    driver: overlay
+    attachable: true
+  nextgen-backend:
+    driver: overlay
+    attachable: true

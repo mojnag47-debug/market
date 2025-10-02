@@ -1,0 +1,363 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  username      String?   @unique
+  firstName     String?
+  lastName      String?
+  phoneNumber   String?   @unique @db.VarChar(13)
+  // Phone validation handled at application layer
+  emailVerified DateTime?
+  phoneVerified DateTime?
+  password      String
+  role          UserRole  @default(CUSTOMER)
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([createdAt])
+  @@index([phoneNumber])
+
+  // Relations
+  orders        Order[]
+  reviews       Review[]
+  cart          CartItem[]
+  wishlist      WishlistItem[]
+  addresses     Address[]
+  
+  // Seller relation and AR relations
+  sellerProducts Product[] @relation("SellerProducts")
+  arSessions     ARSession[]
+  arEvents       AREvent[]
+
+  @@map("users")
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  @@index([name])
+  @@index([slug])
+  description String?
+  imageUrl    String?
+  parentId    String?
+  parent      Category? @relation("CategoryParent", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryParent")
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("categories")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  price       Decimal  @default(0.0)
+  comparePrice Decimal?
+  stock       Int      @default(0)
+  sku         String?  @unique
+  barcode     String?
+  imageUrls   String[]
+  isActive    Boolean  @default(true)
+  isFeatured  Boolean  @default(false)
+  
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  
+  sellerId    String?
+  seller      User?    @relation("SellerProducts", fields: [sellerId], references: [id])
+
+  // AR relations
+  arAssets     ARAsset[]
+  arSessions   ARSession[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  orderItems  OrderItem[]
+  reviews     Review[]
+  cartItems   CartItem[]
+  wishlistItems WishlistItem[]
+
+  @@index([categoryId])
+  @@index([sellerId])
+  @@map("products")
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderNumber   String      @unique
+  status        OrderStatus @default(PENDING)
+  totalAmount   Decimal
+  currency      String      @default("IRR") @db.Char(3)
+  shippingCost  Decimal     @default(0)
+  taxAmount     Decimal     @default(0)
+  discountAmount Decimal    @default(0)
+  
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  
+  shippingAddressId String
+  shippingAddress   Address @relation(fields: [shippingAddressId], references: [id])
+  
+  paymentMethod PaymentMethod?
+  paymentStatus PaymentStatus @default(PENDING)
+  paidAt        DateTime?
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  items         OrderItem[]
+  payments      Payment[]
+
+  @@index([userId])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  quantity  Int
+  price     Decimal
+  
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  createdAt DateTime @default(now())
+
+  @@map("order_items")
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  quantity  Int
+  
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+model WishlistItem {
+  id        String  @id @default(cuid())
+  
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@map("wishlist_items")
+}
+
+model Address {
+  id          String  @id @default(cuid())
+  firstName   String
+  lastName    String
+  company     String?
+  address1    String
+  address2    String?
+  city        String
+  state       String
+  postalCode  String @db.Char(10)
+  country     String  @default("IR")
+  phoneNumber String?
+  isDefault   Boolean @default(false)
+  
+  userId      String
+  user        User    @relation(fields: [userId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  orders      Order[]
+
+  @@index([userId])
+  @@map("addresses")
+}
+
+model Review {
+  id        String  @id @default(cuid())
+  rating    Int     @default(5)
+  title     String?
+  comment   String?
+  isVerified Boolean @default(false)
+  
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, productId])
+  @@map("reviews")
+}
+
+model Payment {
+  id              String        @id @default(cuid())
+  amount          Decimal
+  currency        String        @default("IRR")
+  gateway         PaymentGateway @default(ZARINPAL)
+  gatewayTransactionId String?
+  status          PaymentStatus @default(PENDING)
+  metadata        Json?
+  
+  orderId         String
+  order           Order         @relation(fields: [orderId], references: [id])
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("payments")
+}
+
+enum UserRole {
+  CUSTOMER
+  SELLER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  ZARINPAL
+  BANK_TRANSFER
+  CASH_ON_DELIVERY
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentGateway {
+  ZARINPAL
+  MELLAT
+  PARSIAN
+  SAMAN
+}
+
+enum ARAssetFileType {
+  GLB
+  USDZ
+  FBX
+  OTHER
+}
+
+enum AREventType {
+  SESSION_START
+  SESSION_END
+  MODEL_VIEW
+  MODEL_INTERACTION
+  ERROR
+  UPLOAD_REQUESTED
+}
+
+enum ARMode {
+  SCENE_VIEWER
+  QUICK_LOOK
+  WEBXR
+}
+
+model ARAsset {
+  id          String          @id @default(cuid())
+  productId   String
+  product     Product         @relation(fields: [productId], references: [id])
+  displayName String
+  url         String
+  thumbnailUrl String?
+  fileType    ARAssetFileType @default(GLB)
+  fileSize    Int?            // size in bytes
+  metadata    Json?
+  isActive    Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([productId])
+  @@map("ar_assets")
+}
+
+model ARSession {
+  id         String     @id @default(cuid())
+  userId     String?
+  user       User?      @relation(fields: [userId], references: [id])
+  productId  String?
+  product    Product?   @relation(fields: [productId], references: [id])
+  startedAt  DateTime   @default(now())
+  endedAt    DateTime?
+  deviceInfo String?
+  mode       ARMode     @default(WEBXR)
+  metadata   Json?
+  events     AREvent[]
+
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+
+  @@index([userId])
+  @@index([productId])
+  @@map("ar_sessions")
+}
+
+model AREvent {
+  id         String      @id @default(cuid())
+  sessionId  String
+  session    ARSession   @relation(fields: [sessionId], references: [id])
+  userId     String?
+  user       User?       @relation(fields: [userId], references: [id])
+  type       AREventType
+  payload    Json?
+  occurredAt DateTime    @default(now())
+
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([sessionId])
+  @@index([userId])
+  @@map("ar_events")
+}

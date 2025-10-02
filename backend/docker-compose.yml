@@ -1,0 +1,229 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: nextgen-postgres
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      LANG: en_US.utf8
+      POSTGRES_INITDB_ARGS: --encoding=UTF8 --lc-collate=fa_IR.utf8 --lc-ctype=fa_IR.utf8
+    ports:
+      - "5432:5432"
+    deploy:
+      resources:
+        limits:
+          cpus: '${POSTGRES_CPU_LIMIT}'
+          memory: ${POSTGRES_MEM_LIMIT}
+        reservations:
+          cpus: '0.5'
+          memory: 256MB
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - nextgen-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: nextgen-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1GB
+    volumes:
+      - redis_data:/data
+    networks:
+      - nextgen-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Auth Service
+  auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.auth
+    container_name: nextgen-auth
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - AUTH_PORT=3001
+      - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/nextgen_marketplace
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production-min-256-bits
+      - JWT_EXPIRES_IN=24h
+      - REDIS_URL=redis://redis:6379
+      - BCRYPT_SALT_ROUNDS=12
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - nextgen-network
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Users Service
+  users-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.users
+    container_name: nextgen-users
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=development
+      - USERS_PORT=3002
+      - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/nextgen_marketplace
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production-min-256-bits
+      - REDIS_URL=redis://redis:6379
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+    networks:
+      - nextgen-network
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Products Service
+  products-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.products
+    container_name: nextgen-products
+    restart: unless-stopped
+    ports:
+      - "3003:3003"
+    environment:
+      - NODE_ENV=development
+      - PRODUCTS_PORT=3003
+      - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/nextgen_marketplace
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production-min-256-bits
+      - REDIS_URL=redis://redis:6379
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - nextgen-network
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Orders Service
+  orders-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.orders
+    container_name: nextgen-orders
+    restart: unless-stopped
+    ports:
+      - "3004:3004"
+    environment:
+      - NODE_ENV=development
+      - ORDERS_PORT=3004
+      - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/nextgen_marketplace
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production-min-256-bits
+      - REDIS_URL=redis://redis:6379
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+    networks:
+      - nextgen-network
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: nextgen-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - auth-service
+      - users-service
+      - products-service
+      - orders-service
+    networks:
+      - nextgen-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  nextgen-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16

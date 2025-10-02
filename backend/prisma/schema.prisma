@@ -1,0 +1,396 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums for better type safety
+enum UserRole {
+  ADMIN
+  SELLER
+  BUYER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+}
+
+enum ProductStatus {
+  ACTIVE
+  INACTIVE
+  OUT_OF_STOCK
+  DISCONTINUED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  PAYPAL
+  BANK_TRANSFER
+  CRYPTOCURRENCY
+  WALLET
+}
+
+// Core Models
+model User {
+  id                String     @id @default(cuid())
+  email             String     @unique
+  username          String     @unique
+  firstName         String
+  lastName          String
+  phoneNumber       String?
+  dateOfBirth       DateTime?
+  profileImageUrl   String?
+  bio               String?
+  
+  // Authentication
+  password          String
+  emailVerified     Boolean    @default(false)
+  emailVerificationToken String?
+  passwordResetToken String?
+  passwordResetExpires DateTime?
+  
+  // Status and roles
+  status            UserStatus @default(PENDING_VERIFICATION)
+  role              UserRole   @default(BUYER)
+  
+  // Address information
+  address           Json?      // Store address as JSON for flexibility
+  
+  // Tracking
+  lastLoginAt       DateTime?
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  
+  // Relationships
+  products          Product[]
+  orders            Order[]
+  cartItems         CartItem[]
+  payments          Payment[]
+  sellerProfile     SellerProfile?
+  
+  @@map("users")
+  @@index([email])
+  @@index([username])
+  @@index([role])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model SellerProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  businessName    String
+  businessType    String?
+  taxNumber       String?
+  businessAddress Json?
+  businessPhone   String?
+  businessEmail   String?
+  description     String?
+  website         String?
+  
+  // Seller metrics
+  rating          Float    @default(0)
+  totalReviews    Int      @default(0)
+  totalSales      Int      @default(0)
+  
+  // Verification
+  verified        Boolean  @default(false)
+  verificationDate DateTime?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relationships
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("seller_profiles")
+  @@index([verified])
+  @@index([rating])
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  imageUrl    String?
+  parentId    String?
+  
+  // Hierarchy
+  parent      Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+  
+  // Tracking
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relationships
+  products    Product[]
+  
+  @@map("categories")
+  @@index([slug])
+  @@index([parentId])
+}
+
+model Product {
+  id              String        @id @default(cuid())
+  name            String
+  slug            String        @unique
+  description     String
+  shortDescription String?
+  
+  // Pricing
+  price           Decimal       @db.Decimal(12, 2)
+  compareAtPrice  Decimal?      @db.Decimal(12, 2)
+  costPrice       Decimal?      @db.Decimal(12, 2)
+  
+  // Inventory
+  sku             String        @unique
+  barcode         String?
+  quantity        Int           @default(0)
+  lowStockThreshold Int         @default(10)
+  
+  // Product details
+  weight          Float?
+  dimensions      Json?         // {length, width, height}
+  images          String[]      @default([])
+  tags            String[]      @default([])
+  
+  // Status and visibility
+  status          ProductStatus @default(INACTIVE)
+  featured        Boolean       @default(false)
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  // Seller information
+  sellerId        String
+  categoryId      String
+  
+  // Tracking
+  viewCount       Int           @default(0)
+  salesCount      Int           @default(0)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  // Relationships
+  seller          User          @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  category        Category      @relation(fields: [categoryId], references: [id])
+  cartItems       CartItem[]
+  orderItems      OrderItem[]
+  
+  @@map("products")
+  @@index([sellerId])
+  @@index([categoryId])
+  @@index([status])
+  @@index([featured])
+  @@index([slug])
+  @@index([sku])
+  @@index([price])
+  @@index([createdAt])
+}
+
+model CartItem {
+  id          String   @id @default(cuid())
+  userId      String
+  productId   String
+  quantity    Int      @default(1)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@map("cart_items")
+  @@unique([userId, productId])
+  @@index([userId])
+  @@index([productId])
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique
+  userId          String
+  
+  // Order details
+  subtotal        Decimal     @db.Decimal(12, 2)
+  taxAmount       Decimal     @db.Decimal(12, 2) @default(0)
+  shippingAmount  Decimal     @db.Decimal(12, 2) @default(0)
+  discountAmount  Decimal     @db.Decimal(12, 2) @default(0)
+  totalAmount     Decimal     @db.Decimal(12, 2)
+  
+  // Status
+  status          OrderStatus @default(PENDING)
+  
+  // Shipping information
+  shippingAddress Json
+  billingAddress  Json?
+  
+  // Tracking
+  notes           String?
+  trackingNumber  String?
+  shippedAt       DateTime?
+  deliveredAt     DateTime?
+  cancelledAt     DateTime?
+  cancellationReason String?
+  
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  // Relationships
+  user            User        @relation(fields: [userId], references: [id])
+  orderItems      OrderItem[]
+  payments        Payment[]
+  
+  @@map("orders")
+  @@index([userId])
+  @@index([status])
+  @@index([orderNumber])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id          String  @id @default(cuid())
+  orderId     String
+  productId   String
+  
+  quantity    Int
+  unitPrice   Decimal @db.Decimal(12, 2)
+  totalPrice  Decimal @db.Decimal(12, 2)
+  
+  // Product snapshot (in case product details change)
+  productName String
+  productSku  String
+  productImage String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product @relation(fields: [productId], references: [id])
+  
+  @@map("order_items")
+  @@index([orderId])
+  @@index([productId])
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  orderId           String
+  userId            String
+  
+  // Payment details
+  amount            Decimal       @db.Decimal(12, 2)
+  currency          String        @default("USD")
+  method            PaymentMethod
+  status            PaymentStatus @default(PENDING)
+  
+  // Payment gateway information
+  gatewayProvider   String?       // stripe, paypal, etc.
+  gatewayPaymentId  String?       // External payment ID
+  gatewayResponse   Json?         // Store gateway response
+  
+  // Transaction details
+  transactionId     String?       @unique
+  failureReason     String?
+  refundAmount      Decimal?      @db.Decimal(12, 2)
+  refundedAt        DateTime?
+  
+  // Tracking
+  processedAt       DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  
+  // Relationships
+  order             Order         @relation(fields: [orderId], references: [id])
+  user              User          @relation(fields: [userId], references: [id])
+  
+  @@map("payments")
+  @@index([orderId])
+  @@index([userId])
+  @@index([status])
+  @@index([method])
+  @@index([transactionId])
+  @@index([createdAt])
+}
+
+// System models
+model Role {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  permissions Json     @default("[]")
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("roles")
+}
+
+// Audit and logging
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  action      String
+  entity      String   // table name
+  entityId    String
+  oldValues   Json?
+  newValues   Json?
+  ipAddress   String?
+  userAgent   String?
+  
+  createdAt   DateTime @default(now())
+  
+  @@map("audit_logs")
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// Configuration and settings
+model SystemSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  description String?
+  type        String   @default("string") // string, number, boolean, json
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("system_settings")
+}

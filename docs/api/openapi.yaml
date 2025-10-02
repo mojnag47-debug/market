@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: NextGen Marketplace API
+  version: 1.0.0
+  description: |
+    Core API for NextGen Marketplace platform
+    
+    ## Standards
+    - Error responses follow RFC7807
+    - All dates in ISO8601 format
+    - UUIDs for resource identifiers
+
+servers:
+  - url: https://api.nextgen-marketplace.com/v1
+    description: Production API
+  - url: http://localhost:3000/api/v1
+    description: Local development
+
+paths:
+  /health:
+    get:
+      summary: Service health check
+      responses:
+        '200':
+          description: API operational
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                    enum: [ok, degraded, offline]
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: "2024-01-01T12:00:00Z"
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    UnauthorizedError:
+      description: Missing or invalid authentication
+    NotFound:
+      description: Resource not found
+
+security:
+  - BearerAuth: []
