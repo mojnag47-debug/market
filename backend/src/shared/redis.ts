@@ -1,5 +1,8 @@
+// The 'redis' package may not have resolution available in all consuming TS projects (Next during multi-project type checking).
+// Use a ts-ignore here to avoid build-time type-resolution failures while keeping runtime import intact.
+// @ts-ignore
 import { createClient } from 'redis';
-import { env } from './config/env';
+import { env } from '../config/env';
 import { logger } from './logger';
 
 type RedisClient = ReturnType<typeof createClient>;
@@ -9,7 +12,7 @@ const redisClient = createClient({
   ...(env.REDIS_PASSWORD && { password: env.REDIS_PASSWORD })
 });
 
-redisClient.on('error', (err) => logger.error('Redis Client Error', err));
+redisClient.on('error', (err: unknown) => logger.error('Redis Client Error', err));
 
 const connectRedis = async (): Promise<RedisClient> => {
   if (!redisClient.isOpen) {

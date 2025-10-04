@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Prisma middleware for soft deletes (if needed)
-prisma.$use(async (params, next) => {
+prisma.$use(async (params: any, next: (params: any) => Promise<any>) => {
   // Handle soft delete for User model
   if (params.model === 'User') {
     if (params.action === 'delete') {
@@ -47,7 +47,7 @@ prisma.$use(async (params, next) => {
 });
 
 // Prisma middleware for automatic timestamps
-prisma.$use(async (params, next) => {
+prisma.$use(async (params: any, next: (params: any) => Promise<any>) => {
   if (params.action === 'create') {
     if (params.args.data) {
       params.args.data.createdAt = new Date();

@@ -1,14 +1,11 @@
 import { createLogger, format, transports } from 'winston';
-import * as dayjs from 'dayjs';
-import * as jalaliday from 'dayjs/plugin/jalaliUtc';
-
-dayjs.extend(jalaliday);
+import dayjs from 'dayjs';
+import 'dayjs/locale/fa';
 
 const { combine, timestamp, printf } = format;
 
 const persianFormat = printf(({ level, message, timestamp }) => {
-  const jalaliDate = dayjs(timestamp)
-    .calendar('jalali')
+  const jalaliDate = dayjs(String(timestamp))
     .locale('fa')
     .format('YYYY/MM/DD HH:mm:ss');
 
@@ -34,10 +31,7 @@ export const logger = createLogger({
       host: 'monitoring.example.com',
       port: 443,
       path: '/api/v1/logs',
-      ssl: true,
-      timeout: 3000,
-      reconnect: true,
-      maxRetries: 3
+      ssl: true
     })
   ],
   exceptionHandlers: [

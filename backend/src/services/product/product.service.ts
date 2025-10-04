@@ -1,16 +1,7 @@
-import { PrismaClient } from '@prisma/client';
-import { cache } from '../shared/redis';
-import { logger } from '../shared/logger';
-import { ProductNotFoundError } from '../shared/errors';
-
-const getPrismaInstance = () => {
-  if (!global.prisma) {
-    global.prisma = new PrismaClient();
-  }
-  return global.prisma;
-};
-
-const prisma = getPrismaInstance();
+import { prisma } from '../../shared/database';
+import { cache } from '../../shared/redis';
+import { logger } from '../../shared/logger';
+import { NotFoundError } from '../../shared/types';
 
 const PRODUCT_CACHE_TTL = 3600; // 1 hour
 
@@ -35,7 +26,7 @@ async function getProductById(id: string) {
     }
   });
 
-  if (!product) throw new ProductNotFoundError();
+  if (!product) throw new NotFoundError('Product not found');
 
   await cache.set(cacheKey, product, PRODUCT_CACHE_TTL);
   return product;

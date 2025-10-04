@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es2020",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "target": "es2022",
     "outDir": "../../dist/libs/shared-utils",
     "rootDir": "./src",
     "declaration": true,

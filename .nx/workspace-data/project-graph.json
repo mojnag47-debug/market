@@ -43,7 +43,7 @@
             "parallelism": true
           },
           "build": {
-            "executor": "@nx/js:swc",
+            "executor": "@nx/js:tsc",
             "outputs": [
               "{options.outputPath}"
             ],
@@ -56,15 +56,7 @@
               ]
             },
             "configurations": {},
-            "parallelism": true,
-            "cache": true,
-            "dependsOn": [
-              "^build"
-            ],
-            "inputs": [
-              "production",
-              "^production"
-            ]
+            "parallelism": true
           },
           "test": {
             "executor": "@nx/jest:jest",
@@ -146,7 +138,7 @@
             "parallelism": true
           },
           "build": {
-            "executor": "@nx/js:swc",
+            "executor": "@nx/js:tsc",
             "outputs": [
               "{options.outputPath}"
             ],
@@ -159,15 +151,7 @@
               ]
             },
             "configurations": {},
-            "parallelism": true,
-            "cache": true,
-            "dependsOn": [
-              "^build"
-            ],
-            "inputs": [
-              "production",
-              "^production"
-            ]
+            "parallelism": true
           },
           "test": {
             "executor": "@nx/jest:jest",
@@ -1041,7 +1025,7 @@
             "parallelism": true
           },
           "build": {
-            "executor": "@nx/js:swc",
+            "executor": "@nx/js:tsc",
             "outputs": [
               "{options.outputPath}"
             ],
@@ -1054,15 +1038,7 @@
               ]
             },
             "configurations": {},
-            "parallelism": true,
-            "cache": true,
-            "dependsOn": [
-              "^build"
-            ],
-            "inputs": [
-              "production",
-              "^production"
-            ]
+            "parallelism": true
           },
           "test": {
             "executor": "@nx/jest:jest",
@@ -7801,18 +7777,18 @@
         "hash": "sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ=="
       }
     },
-    "npm:@types/jsonwebtoken@9.0.10": {
+    "npm:@types/jsonwebtoken": {
       "type": "npm",
-      "name": "npm:@types/jsonwebtoken@9.0.10",
+      "name": "npm:@types/jsonwebtoken",
       "data": {
         "version": "9.0.10",
         "packageName": "@types/jsonwebtoken",
         "hash": "sha512-asx5hIG9Qmf/1oStypjanR7iKTv0gXQ1Ov/jfrX6kS/EO0OFni8orbmGCn0672NHR3kXHwpAwR+B368ZGN/2rA=="
       }
     },
-    "npm:@types/jsonwebtoken": {
+    "npm:@types/jsonwebtoken@9.0.5": {
       "type": "npm",
-      "name": "npm:@types/jsonwebtoken",
+      "name": "npm:@types/jsonwebtoken@9.0.5",
       "data": {
         "version": "9.0.5",
         "packageName": "@types/jsonwebtoken",
@@ -21135,6 +21111,11 @@
       },
       {
         "source": "shared-utils",
+        "target": "npm:zod",
+        "type": "static"
+      },
+      {
+        "source": "shared-utils",
         "target": "npm:winston",
         "type": "static"
       },
@@ -29545,7 +29526,7 @@
       },
       {
         "source": "npm:@nestjs/jwt",
-        "target": "npm:@types/jsonwebtoken",
+        "target": "npm:@types/jsonwebtoken@9.0.5",
         "type": "static"
       },
       {
@@ -33307,21 +33288,21 @@
         "type": "static"
       }
     ],
-    "npm:@types/jsonwebtoken@9.0.10": [
+    "npm:@types/jsonwebtoken": [
       {
-        "source": "npm:@types/jsonwebtoken@9.0.10",
+        "source": "npm:@types/jsonwebtoken",
         "target": "npm:@types/ms",
         "type": "static"
       },
       {
-        "source": "npm:@types/jsonwebtoken@9.0.10",
+        "source": "npm:@types/jsonwebtoken",
         "target": "npm:@types/node",
         "type": "static"
       }
     ],
-    "npm:@types/jsonwebtoken": [
+    "npm:@types/jsonwebtoken@9.0.5": [
       {
-        "source": "npm:@types/jsonwebtoken",
+        "source": "npm:@types/jsonwebtoken@9.0.5",
         "target": "npm:@types/node",
         "type": "static"
       }
@@ -33362,7 +33343,7 @@
       },
       {
         "source": "npm:@types/passport-jwt",
-        "target": "npm:@types/jsonwebtoken@9.0.10",
+        "target": "npm:@types/jsonwebtoken",
         "type": "static"
       },
       {
@@ -48797,5 +48778,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1759401738005
+  "computedAt": 1759593002394
 }
