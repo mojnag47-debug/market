@@ -361,3 +361,45 @@ model AREvent {
   @@index([userId])
   @@map("ar_events")
 }
+
+// --- Authentication token models ---
+model RefreshToken {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  hashedToken String
+  deviceId    String
+  ip          String?
+  expiresAt   DateTime
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([deviceId])
+  @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  hashedToken String
+  expiresAt   DateTime
+  used        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@map("password_reset_tokens")
+}
+
+model TokenRevocationLog {
+  id            String   @id @default(cuid())
+  tokenId       String
+  userId        String
+  deviceId      String?
+  reason        String
+  createdAt     DateTime @default(now())
+
+  @@index([userId])
+  @@map("token_revocation_logs")
+}

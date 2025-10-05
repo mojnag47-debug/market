@@ -29,6 +29,8 @@
     "test:upload": "jest --config=tools/jest/jest.ar.config.js --runInBand src/__tests__/upload.test.ts",
     "test:e2e": "playwright test e2e --project=chromium",
     "test:ar": "jest --config=tools/jest/jest.ar.config.js --runInBand src/__tests__/ar-assets.test.ts",
+    "test:webhook": "jest --runInBand --testPathPattern=apps/api/src/controllers/webhookController.test.ts",
+    "test:integration": "jest --runInBand --testPathPattern=apps/api/src/modules/auth/auth.integration.test.ts",
     "docker:up": "docker-compose -f docker/docker-compose.dev.yml up -d",
     "docker:down": "docker-compose -f docker/docker-compose.dev.yml down"
   },
@@ -65,7 +67,16 @@
     "sonner": "^2.0.7",
     "tailwindcss": "^3.4.17",
     "three": "^0.176.0",
-    "winston": "^3.18.1"
+    "winston": "^3.18.1",
+    "redis": "^4.6.7",
+    "resend": "^1.10.0",
+    "zod": "^3.25.76",
+    "express-mongo-sanitize": "^2.2.0",
+    "xss-clean": "^0.1.1",
+    "pino-http": "^7.0.0",
+    "multer": "^1.4.5-lts.1",
+    "ethers": "^6.9.0",
+    "cockatiel": "^5.0.0"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.894.0",
@@ -81,7 +92,7 @@
     "@swc/core": "1.13.5",
     "@swc/jest": "0.2.39",
     "@types/express": "^5.0.3",
-    "@types/jest": "^30.0.0",
+    "@types/jest": "^29.5.8",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "20.19.9",
     "@types/react": "^19.1.16",
@@ -108,6 +119,11 @@
     "uuid": "^13.0.0",
     "vite": "^7.1.7",
     "vite-plugin-dts": "^4.5.4",
-    "zod": "^3.25.76"
+    "testcontainers": "^9.0.0",
+    "supertest": "^6.3.3",
+    "@types/supertest": "^2.0.12",
+    "@types/redis": "^4.0.12",
+    "@types/cookie-parser": "^1.4.6",
+    "hardhat": "^2.17.0"
   }
 }
